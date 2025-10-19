@@ -26,10 +26,12 @@ func toggle():
 	else:
 		open = false
 	if(open ):
-		$Sprite2D.visible=false
+		$open.visible=true
+		$closed.visible=false
 		$CollisionShape2D.set_deferred("disabled",true) 
 		print("aperta")
 	else:
-		$Sprite2D.visible=true
+		$open.visible=false
+		$closed.visible=true
 		$CollisionShape2D.set_deferred("disabled",false) 
 		print("chiusa")
