@@ -25,14 +25,15 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		
 func toggle():
-	if target_door:
-		target_door.toggle()
-		print("Leva ha attivato la porta:", target_door.name)
+	
 	if state == "idle":
+		target_door.switch_pressed()
 		$pulled.visible = true
 		$idle.visible = false
 		state = "active"
 	elif state == "active":
+		target_door.switch_released()
+		
 		$pulled.visible = false
 		$idle.visible = true
 		state = "idle"
