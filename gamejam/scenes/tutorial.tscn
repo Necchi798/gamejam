@@ -486,7 +486,7 @@ tile_set = SubResource("TileSet_tbcdj")
 tile_set = SubResource("TileSet_nlqja")
 
 [node name="player" parent="." node_paths=PackedStringArray("double_node") instance=ExtResource("3_gbqnl")]
-position = Vector2(424, 11)
+position = Vector2(-101, 10)
 double_node = NodePath("../double")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
