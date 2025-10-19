@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://plsva74qyasj"]
+[gd_scene load_steps=19 format=3 uid="uid://plsva74qyasj"]
 
 [ext_resource type="Script" uid="uid://dg5004sjjcaiu" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cxvgutqvgcdlo" path="res://assets/spritesheet.png" id="3_dqkch"]
-[ext_resource type="Texture2D" uid="uid://dvtvqtjjksje7" path="res://assets/guy.PNG" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("3_dqkch")
@@ -126,12 +125,6 @@ radius = 6.0
 [node name="player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_g2els")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, 5)
-scale = Vector2(0.008, 0.008)
-texture = ExtResource("3_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)

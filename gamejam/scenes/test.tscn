@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=4 uid="uid://d0ief2ohrikwe"]
+
+[ext_resource type="Texture2D" uid="uid://b456b44wxsrul" path="res://assets/brick_red.png" id="1_lpvoh"]
+[ext_resource type="Texture2D" uid="uid://fwfd58lxmu2d" path="res://assets/brick_grey.png" id="2_at5dv"]
+[ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="3_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://eqx60rc41pao" path="res://scenes/double.tscn" id="4_uacia"]
+[ext_resource type="PackedScene" uid="uid://bpbs3va4i6cii" path="res://scenes/door.tscn" id="5_yk7ts"]
+[ext_resource type="PackedScene" uid="uid://dqkfradqj6vpr" path="res://scenes/lever.tscn" id="6_ajshl"]
+[ext_resource type="PackedScene" uid="uid://dnrh5logc7ctw" path="res://scenes/pressure_plate.tscn" id="7_at5dv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghpyy"]
+texture = ExtResource("1_lpvoh")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44saj"]
+texture = ExtResource("2_at5dv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_7mbro"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 4
+sources/0 = SubResource("TileSetAtlasSource_ghpyy")
+sources/1 = SubResource("TileSetAtlasSource_44saj")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.09, 0.09)
+tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD6/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAAEAP//AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAFAAIAAQAAAAAAAAAGAAIAAQAAAAAAAAAHAAIAAQAAAAAAAAAIAAIAAQAAAAAAAAAKAAIAAQAAAAAAAAAJAAIAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_7mbro")
+
+[node name="player" parent="." node_paths=PackedStringArray("double_node") instance=ExtResource("3_jcd4p")]
+position = Vector2(17, 11)
+double_node = NodePath("../double")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-18, 0)
+zoom = Vector2(4, 4)
+
+[node name="double" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_uacia")]
+position = Vector2(-1, 12)
+player = NodePath("../player")
+
+[node name="door" parent="." instance=ExtResource("5_yk7ts")]
+position = Vector2(57, 18)
+required_switches = 2
+
+[node name="lever" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("6_ajshl")]
+position = Vector2(-33, 16)
+target_door = NodePath("../door")
+
+[node name="pressure plate" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("7_at5dv")]
+position = Vector2(34, 15)
+target_door = NodePath("../door")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://bpb7g2gri02"]
+[gd_scene load_steps=17 format=4 uid="uid://bpb7g2gri02"]
 
 [ext_resource type="Texture2D" uid="uid://b456b44wxsrul" path="res://assets/brick_red.png" id="1_cq4me"]
+[ext_resource type="Texture2D" uid="uid://b2xjx7ysx4x7p" path="res://assets/cell_halfmono-1.png.png" id="1_nlqja"]
 [ext_resource type="Texture2D" uid="uid://fwfd58lxmu2d" path="res://assets/brick_grey.png" id="2_6yjpi"]
 [ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="3_gbqnl"]
 [ext_resource type="PackedScene" uid="uid://dqkfradqj6vpr" path="res://scenes/lever.tscn" id="4_ckvwl"]
@@ -8,6 +9,76 @@
 [ext_resource type="PackedScene" uid="uid://dnrh5logc7ctw" path="res://scenes/pressure_plate.tscn" id="6_6yjpi"]
 [ext_resource type="PackedScene" uid="uid://eqx60rc41pao" path="res://scenes/double.tscn" id="6_gbqnl"]
 [ext_resource type="FontFile" uid="uid://dqibjgikqovgn" path="res://assets/fonts/PixelOperator8.ttf" id="8_ckvwl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbcdj"]
+texture = ExtResource("1_nlqja")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ej4tf"]
+sources/0 = SubResource("TileSetAtlasSource_tbcdj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0epgs"]
 texture = ExtResource("1_cq4me")
@@ -21,19 +92,36 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ckvwl"]
+texture = ExtResource("1_cq4me")
+texture_region_size = Vector2i(128, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 1, -64, 0)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -32)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -1, 64, 1, 64, 64, -64, 64)
+
 [sub_resource type="TileSet" id="TileSet_tbcdj"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_0epgs")
 sources/1 = SubResource("TileSetAtlasSource_g2equ")
+sources/4 = SubResource("TileSetAtlasSource_ckvwl")
 
 [sub_resource type="LabelSettings" id="LabelSettings_gbqnl"]
 
 [node name="tutorial" type="Node2D"]
 
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AADd/wMAAAAAAAUAAADd/wQAAAAAAAYAAADd/wUAAAAAAAcAAADe/wMAAAABAAUAAADe/wQAAAABAAYAAADe/wUAAAABAAcAAADf/wMAAAACAAUAAADf/wQAAAACAAYAAADf/wUAAAACAAcAAADg/wMAAAADAAUAAADg/wQAAAADAAYAAADg/wUAAAADAAcAAADh/wMAAAAEAAUAAADh/wQAAAAEAAYAAADh/wUAAAAEAAcAAADi/wMAAAAFAAUAAADi/wQAAAAFAAYAAADi/wUAAAAFAAcAAADj/wMAAAAGAAUAAADj/wQAAAAGAAYAAADj/wUAAAAGAAcAAADk/wMAAAAHAAUAAADk/wQAAAAHAAYAAADk/wUAAAAHAAcAAAA=")
+tile_set = SubResource("TileSet_ej4tf")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.09, 0.09)
-tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD6/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAD4/wIAAQAAAAAAAAD3/wIAAQAAAAAAAAD2/wIAAQAAAAAAAAD1/wIAAQAAAAAAAAD0/wIAAQAAAAAAAADz/wIAAQAAAAAAAAAFAAIAAQAAAAAAAAAGAAIAAQAAAAAAAAAHAAIAAQAAAAAAAAAIAAIAAQAAAAAAAAAJAAIAAQAAAAAAAAAKAAIAAQAAAAAAAAALAAIAAQAAAAAAAAAMAAIAAQAAAAAAAAAEAP//AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPn/AAAAAAAAAADz/wEAAAAAAAAAAADz////AAAAAAAAAADz//3/AAAAAAAAAADz//v/AAAAAAAAAADz//n/AAAAAAAAAAANAAIAAQAAAAAAAAAOAAIAAQAAAAAAAAAPAAIAAQAAAAAAAAAQAAIAAQAAAAAAAAARAAIAAQAAAAAAAAASAAIAAQAAAAAAAAATAAIAAQAAAAAAAAAUAAIAAQAAAAAAAAAVAAIAAQAAAAAAAAASAP//AAAAAAAAAAASAP7/AAAAAAAAAAASAP3/AAAAAAAAAAASAPz/AAAAAAAAAAASAPv/AAAAAAAAAAASAPr/AAAAAAAAAADz/wAAAAAAAAAAAADz//7/AAAAAAAAAADz//z/AAAAAAAAAADz//r/AAAAAAAAAAAWAAIAAQAAAAAAAAAXAAIAAQAAAAAAAAAYAAIAAQAAAAAAAAAZAAIAAQAAAAAAAAAaAAIAAQAAAAAAAAAbAAIAAQAAAAAAAAAcAAIAAQAAAAAAAAAdAAIAAQAAAAAAAAAeAAIAAQAAAAAAAAAgAAIAAQAAAAAAAAAfAAIAAQAAAAAAAAAfAP//AAAAAAAAAAAeAP//AAAAAAAAAAAdAP//AAAAAAAAAAAcAP//AAAAAAAAAAAbAP//AAAAAAAAAAAaAP//AAAAAAAAAAAZAP//AAAAAAAAAAAYAP//AAAAAAAAAAAXAP//AAAAAAAAAAAgAP//AAAAAAAAAAAgAP7/AAAAAAAAAAAgAP3/AAAAAAAAAAAgAPz/AAAAAAAAAAAgAPv/AAAAAAAAAAAgAPr/AAAAAAAAAAAgAPn/AAAAAAAAAAAhAAIAAQAAAAAAAAAiAAIAAQAAAAAAAAAjAAIAAQAAAAAAAAAkAAIAAQAAAAAAAAAlAAIAAQAAAAAAAAAmAAIAAQAAAAAAAAAnAAIAAQAAAAAAAAAoAAIAAQAAAAAAAAApAAIAAQAAAAAAAAAqAAIAAQAAAAAAAAArAAIAAQAAAAAAAAAsAAIAAQAAAAAAAAAtAAIAAQAAAAAAAAAuAAIAAQAAAAAAAAAvAAIAAQAAAAAAAAAwAAIAAQAAAAAAAAAxAAIAAQAAAAAAAAAyAAIAAQAAAAAAAAAxAP//AAAAAAAAAAAxAP7/AAAAAAAAAAAxAP3/AAAAAAAAAAAxAPz/AAAAAAAAAAAxAPv/AAAAAAAAAAAxAPr/AAAAAAAAAAAxAPn/AAAAAAAAAAAwAP//AAAAAAAAAAAvAP//AAAAAAAAAAAuAP//AAAAAAAAAAAtAP//AAAAAAAAAAAsAP//AAAAAAAAAAArAP//AAAAAAAAAAAqAP//AAAAAAAAAAApAP//AAAAAAAAAAAoAP//AAAAAAAAAAAnAP//AAAAAAAAAAAmAP//AAAAAAAAAAAsAPz/AAAAAAAAAAAsAPv/AAAAAAAAAAAsAPr/AAAAAAAAAAAtAPr/AAAAAAAAAAAuAPr/AAAAAAAAAAAvAPr/AAAAAAAAAAAwAPr/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_tbcdj")
 
 [node name="player" parent="." node_paths=PackedStringArray("double_node") instance=ExtResource("3_gbqnl")]
@@ -44,16 +132,18 @@ double_node = NodePath("../double")
 position = Vector2(29, -12)
 zoom = Vector2(6, 5)
 limit_left = -150
+limit_bottom = 35
 position_smoothing_enabled = true
 
-[node name="Label" type="Label" parent="."]
+[node name="first room" type="Label" parent="."]
 offset_left = -135.0
 offset_top = -62.0
 offset_right = 39.0
 offset_bottom = -39.0
-text = "Levers can open doors"
+text = "Levers can open doors
+press \"e\" to interact"
 
-[node name="Label2" type="Label" parent="."]
+[node name="second room" type="Label" parent="."]
 offset_left = 68.0
 offset_top = -64.0
 offset_right = 209.0
@@ -64,16 +154,23 @@ autowrap_mode = 2
 clip_text = true
 text_overrun_behavior = 4
 
+[node name="third room" type="Label" parent="."]
+offset_left = 218.0
+offset_top = -69.0
+offset_right = 369.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("8_ckvwl")
+theme_override_font_sizes/font_size = 10
+text = "...But sometimes we all need a hand 
+press \"q\" to get it!"
+autowrap_mode = 2
+
 [node name="double" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_gbqnl")]
 position = Vector2(9, 12)
 player = NodePath("../player")
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("6_6yjpi")]
 position = Vector2(126, 15)
-target_door = NodePath("../StaticBody2D2")
-
-[node name="lever2" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("4_ckvwl")]
-position = Vector2(165, 16)
 target_door = NodePath("../StaticBody2D2")
 
 [node name="lever" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("4_ckvwl")]
@@ -92,17 +189,6 @@ position = Vector2(375, 18)
 [node name="pressure plate2" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("6_6yjpi")]
 position = Vector2(356, -20)
 target_door = NodePath("../door3")
-
-[node name="Label" type="Label" parent="pressure plate2"]
-offset_left = -138.0
-offset_top = -49.0
-offset_right = 13.0
-offset_bottom = 5.0
-theme_override_fonts/font = ExtResource("8_ckvwl")
-theme_override_font_sizes/font_size = 10
-text = "But sometimes we all need a hand 
-press \"q\" to get it!"
-autowrap_mode = 2
 
 [node name="door4" parent="." instance=ExtResource("5_nlqja")]
 position = Vector2(513, -16)

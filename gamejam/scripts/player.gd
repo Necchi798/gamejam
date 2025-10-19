@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		var current_data = {
 			"direction":direction,
 			"position": global_position,
-			"flip_h": $Sprite2D.flip_h # Registra se lo sprite è girato orizzontalmente
+			"flip_h": $AnimatedSprite2D.flip_h # Registra se lo sprite è girato orizzontalmente
 		}
 		movement_history.append(current_data)
 	if not is_on_floor():
