@@ -29,7 +29,7 @@ sources/1 = SubResource("TileSetAtlasSource_gee14")
 [node name="game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 7)
 zoom = Vector2(4, 4)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

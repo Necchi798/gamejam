@@ -22,7 +22,8 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 
 func _on_area_2d_body_exited(_body: Node2D) -> void:
 	weight -= 1
-	if target_door && weight == 0:
+	if target_door && weight <= 0:
+		weight = 0
 		await get_tree().create_timer(0.5).timeout
 		print("pedana ha attivato la porta:", target_door.name)
 		target_door.switch_released()
