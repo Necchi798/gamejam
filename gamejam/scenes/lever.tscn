@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c1jsbcrb0knx3" path="res://scripts/lever.gd" id="1_qxmkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncfea"]
-size = Vector2(26, 17)
+size = Vector2(2499.9995, 1749.9999)
 
 [node name="lever" type="Area2D"]
 position = Vector2(6, 7)
@@ -15,7 +15,7 @@ collision_mask = 3
 script = ExtResource("1_qxmkn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -1.5)
+position = Vector2(249.99994, 0)
 shape = SubResource("RectangleShape2D_ncfea")
 
 [node name="pulled" type="Sprite2D" parent="."]

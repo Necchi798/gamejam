@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpbs3va4i6cii"]
+[gd_scene load_steps=7 format=3 uid="uid://bpbs3va4i6cii"]
 
 [ext_resource type="Script" uid="uid://ca4lppkbpsxyc" path="res://scripts/door.gd" id="1_hpvv5"]
 [ext_resource type="Texture2D" uid="uid://i8htaguik06j" path="res://assets/door_open.PNG" id="2_uvdjg"]
 [ext_resource type="Texture2D" uid="uid://bxlnhdfmofum7" path="res://assets/door_closed.PNG" id="3_83dcw"]
+[ext_resource type="Texture2D" uid="uid://bvjipf3dxj626" path="res://assets/red.png" id="4_la1wf"]
+[ext_resource type="Texture2D" uid="uid://dclgfsdrbc174" path="res://assets/green.png" id="5_18pbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
 size = Vector2(20.000008, 255)
@@ -28,3 +30,36 @@ texture = ExtResource("2_uvdjg")
 position = Vector2(60, -65.00001)
 scale = Vector2(0.097773425, 0.11230468)
 texture = ExtResource("3_83dcw")
+
+[node name="Red1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-30, -200)
+scale = Vector2(0.81250006, 0.8125)
+texture = ExtResource("4_la1wf")
+
+[node name="Red2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.9073486e-06, -200)
+scale = Vector2(0.81250006, 0.8125)
+texture = ExtResource("4_la1wf")
+
+[node name="Red3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(29.999992, -200)
+scale = Vector2(0.81250006, 0.8125)
+texture = ExtResource("4_la1wf")
+
+[node name="Green" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-30.000008, -199.99998)
+texture = ExtResource("5_18pbm")
+
+[node name="Green2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.9073486e-06, -200)
+texture = ExtResource("5_18pbm")
+
+[node name="Green3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(30, -200)
+texture = ExtResource("5_18pbm")
