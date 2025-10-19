@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=4 uid="uid://b8v1q6ofdecxw"]
+
+[ext_resource type="PackedScene" uid="uid://plsva74qyasj" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://b456b44wxsrul" path="res://assets/brick_red.png" id="2_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://fwfd58lxmu2d" path="res://assets/brick_grey.png" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://dqkfradqj6vpr" path="res://scenes/lever.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dnrh5logc7ctw" path="res://scenes/pressure_plate.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://eqx60rc41pao" path="res://scenes/double.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bpbs3va4i6cii" path="res://scenes/door.tscn" id="7_u5sy4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
+texture = ExtResource("2_lbhrr")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
+texture = ExtResource("3_iywne")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_gee14"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 4
+sources/0 = SubResource("TileSetAtlasSource_u5sy4")
+sources/1 = SubResource("TileSetAtlasSource_gee14")
+
+[node name="game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+zoom = Vector2(4, 4)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.09, 0.09)
+tile_map_data = PackedByteArray("AAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD6/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gee14")
+
+[node name="pressure plate" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("5_iywne")]
+position = Vector2(-53, -20)
+target_door = NodePath("../door")
+
+[node name="double" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_p57ef")]
+position = Vector2(15, 12)
+player = NodePath("../player")
+
+[node name="player" parent="." node_paths=PackedStringArray("double_node") instance=ExtResource("1_uwrxv")]
+position = Vector2(27, 11)
+double_node = NodePath("../double")
+
+[node name="door" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(59, -13)
+
+[node name="lever" parent="." node_paths=PackedStringArray("target_door") instance=ExtResource("3_lnu2h")]
+position = Vector2(-77, -18)
+target_door = NodePath("../door")
